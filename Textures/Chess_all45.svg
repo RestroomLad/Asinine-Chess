@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="45"
+   width="45"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="Chess_all45.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs28" />
+  <sodipodi:namedview
+     id="namedview26"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     showgrid="false"
+     inkscape:zoom="18.044444"
+     inkscape:cx="22.472291"
+     inkscape:cy="18.094212"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="2391"
+     inkscape:window-y="284"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg24" />
+  <g
+     stroke-linejoin="round"
+     stroke-linecap="round"
+     stroke="#000"
+     fill="#fff"
+     stroke-width="1.148"
+     id="g22">
+    <g
+       stroke-width="1.5"
+       id="g10">
+      <path
+         d="m36 36c-3.39-0.97-10.11 0.43-13.5-2-3.39 2.43-10.11 1.03-13.5 2 0 0-1.646 0.54-3 2 0.677 0.97 1.646 0.99 3 0.5 3.39-0.97 10.11 0.46 13.5-1 3.39 1.46 10.11 0.03 13.5 1 1.35 0.49 2.32 0.47 3-0.5-1.35-1.94-3-2-3-2z"
+         id="path4" />
+      <path
+         d="m30 32c-2.5 2.5-12.5 2.5-15 0-0.5-1.5 0-2 0-2h15s0.5 0.5 0 2z"
+         id="path6" />
+      <path
+         d="m30 30h-15"
+         fill="none"
+         id="path8" />
+    </g>
+    <path
+       d="m20.35 7.626c8.03 0.765 12.63 6.124 12.24 22.19h-17.6c0-6.89 7.65-4.97 6.12-16.07"
+       id="path12" />
+    <path
+       d="m21.88 13.75c0.3 2.23-4.25 5.64-6.12 6.89-2.3 1.53-2.16 3.32-3.83 3.06-0.8-0.72 1.08-2.33 0-2.3-0.77 0 0.14 0.94-0.77 1.53-0.76 0-3.058 0.77-3.058-3.06 0-1.53 4.588-9.18 4.588-9.18s1.45-1.457 1.54-2.682c-0.56-0.757-0.39-1.53-0.39-2.296 0.77-0.765 2.3 1.914 2.3 1.914h1.53s0.6-1.524 1.91-2.297c0.77 0 0.77 2.297 0.77 2.297"
+       id="path14" />
+    <path
+       d="m10.78 19.49c0 0.21-0.17 0.38-0.38 0.38s-0.38-0.17-0.38-0.38c0-0.22 0.17-0.38 0.38-0.38s0.38 0.16 0.38 0.38z"
+       id="path16" />
+    <path
+       d="m14.94 12.03c-0.32 0.55-0.72 0.91-0.91 0.8-0.18-0.11-0.07-0.63 0.24-1.18 0.32-0.55 0.72-0.91 0.91-0.81 0.19 0.11 0.07 0.64-0.24 1.19z"
+       id="path18" />
+    <path
+       d="m31.83 29.82c0.77-15.31-4.21-21.05-9.18-21.81"
+       stroke-width=".7654"
+       fill="none"
+       id="path20" />
+  </g>
+</svg>
