@@ -2,13 +2,17 @@ extends Node2D
 
 export var rank = 0
 export var file = 0
+var board
 var selected = false
 var midpointX = 1024/2
 var midpointY = 576/2
 var size = 60
+var dupeStop = false
 
 
 func _ready():		# When this piece is spawned
+	board = get_tree().get_root().get_node("Node2D").get_node("Chessboard").board
+	print(board)
 	load_piece()		#load the piece
 
 func load_piece():	#Loading function to print piece to the screen
@@ -19,15 +23,26 @@ func load_piece():	#Loading function to print piece to the screen
 func _process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
+	
 func file_offset(offset):	#setter function for the chess piece's x axis
 		file = file + offset
 		load_piece()
 func rank_offset(offset):	#setter function for the chess piece's y axis
 		rank = rank + offset
 		load_piece()
-func checkPiece():
+func checkPiece(f, r):
+	var startIndex = rank * 8 + file
+	var endIndex = r * 8 + f
 	if (rank < 0 or rank > 7 or file < 0 or file > 7):
 		self.queue_free()
+	else:
+		board[endIndex] = board[startIndex]
+		board[startIndex] = -1
+		print(startIndex)
+		print(endIndex)
+		rank = r
+		file = f
+	load_piece()
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
@@ -36,12 +51,12 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	pass # Replace with function body.
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT && !event.pressed:
+		if event.button_index == BUTTON_LEFT && !event.pressed && selected:
 			selected = false
+			print("Let go")
 			var tempX = self.position.x
 			var tempY = self.position.y
-			file = round((tempX-midpointX)/size + 3.5)
-			rank = round((tempY-midpointY)/size + 3.5)
-			checkPiece()
-			load_piece()
+			var tempFile = round((tempX-midpointX)/size + 3.5)
+			var tempRank = round((tempY-midpointY)/size + 3.5)
+			checkPiece(tempFile, tempRank)
 #

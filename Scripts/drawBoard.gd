@@ -1,17 +1,22 @@
 extends Node2D
 
 onready var board = [64]
+onready var pieces = []
 onready var piece = preload("res://Chessman.tscn")
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(self.filename)
 	_draw()
 	startingPos()
 	massLoad()
 	
 	pass
+func _unhandled_input(e):
+	if (e is InputEventKey and e.scancode == KEY_M):
+		massLoad()
+	elif (e is InputEventKey and e.scancode == KEY_E):
+		pieceExtinction()
 
 func _draw():	#Draw the board
 	var darkCol = Color8(88, 39, 7)
@@ -37,7 +42,13 @@ func startingPos():
 			board[i] = 4
 		else:
 			board[i] = -1
+func pieceExtinction():
+	var instance
+	while pieces.size() > 0:
+		instance = pieces.pop_front()
+		instance.queue_free()
 func massLoad():
+	pieceExtinction()
 	for i in range(0, 64):
 		if board[i] != -1:
 			var instance = piece.instance()
@@ -46,3 +57,6 @@ func massLoad():
 			instance.rank = i/8
 			instance.file = i%8
 			instance.load_piece()
+			pieces.push_back(instance)
+
+
