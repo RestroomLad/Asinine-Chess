@@ -7,12 +7,10 @@ var selected = false
 var midpointX = 1024/2
 var midpointY = 576/2
 var size = 60
-var dupeStop = false
-
+signal checkPiece(piece, startI, endI)
 
 func _ready():		# When this piece is spawned
 	board = get_tree().get_root().get_node("Node2D").get_node("Chessboard").board
-	print(board)
 	load_piece()		#load the piece
 
 func load_piece():	#Loading function to print piece to the screen
@@ -33,16 +31,10 @@ func rank_offset(offset):	#setter function for the chess piece's y axis
 func checkPiece(f, r):
 	var startIndex = rank * 8 + file
 	var endIndex = r * 8 + f
-	if (rank < 0 or rank > 7 or file < 0 or file > 7):
-		self.queue_free()
-	else:
-		board[endIndex] = board[startIndex]
-		board[startIndex] = -1
-		print(startIndex)
-		print(endIndex)
-		rank = r
-		file = f
+	if 0 <= f && f < 8 && 0 <= r && r < 8:
+		emit_signal("checkPiece", self, startIndex, endIndex)
 	load_piece()
+
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("click"):
