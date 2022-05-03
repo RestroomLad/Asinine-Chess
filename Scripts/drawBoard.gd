@@ -64,28 +64,58 @@ func startingPos():
 		else:
 			board[i] = -1
 func handle_checkPiece(piece, startI, endI: int):
+	var success = false;
 	print(startI, " ", board[startI])
 	print(endI, " ", board[endI]) 
 	
 	piece.rank = endI/8
 	piece.file = endI % 8
-	if board[endI] == -1:
+	if endI == startI:
+		print("Dumbass")
+	elif endI == -1:
+		print("Dead")
+		success = true
+	elif board[endI] == -1: # Normal Move
 		board[endI] = board[startI]
-		board[startI] = -1
-	elif board[endI] == 1 && board[startI] == 3:
-		board[startI] = -1
+		success = true
+	elif (board[endI] == 1 && board[startI] == 3) || (board[endI] == 3 && board[startI] == 1): # White Horsie Queen 
 		board[endI] = 6
-		massLoad()
+		success = true
+	elif (board[endI] == 2 && board[startI] == 3) || (board[endI] == 3 && board[startI] == 2): # White Horsie Bishop
+		board[endI] = 7
+		success = true
+	elif (board[endI] == 4 && board[startI] == 3) || (board[endI] == 3 && board[startI] == 4): # White Horsie Rook
+		board[endI] = 8
+		success = true
+	elif board[endI] == 4 && board[startI] == 4: # White Monolith
+		board[endI] = 9
+		success = true
+	elif (board[endI] == 11 && board[startI] == 13) || (board[endI] == 13 && board[startI] == 11): # Black Horsie Queen 
+		board[endI] = 16
+		success = true
+	elif (board[endI] == 12 && board[startI] == 13) || (board[endI] == 13 && board[startI] == 12): # White Horsie Bishop
+		board[endI] = 17
+		success = true
+	elif (board[endI] == 14 && board[startI] == 13) || (board[endI] == 3 && board[startI] == 4): # Black Horsie Rook
+		board[endI] = 18
+		success = true
+	elif board[endI] == 14 && board[startI] == 14: # Black Monolith
+		board[endI] = 19
+		success = true
 	else :
 		board[endI] = board[startI]
+		success = true
+	if success == true:
 		board[startI] = -1
+		if piece.hasMoved == false:
+			piece.hasMoved = true
 		massLoad()
-	
 func pieceExtinction():
 	var instance
 	while pieces.size() > 0:
 		instance = pieces.pop_front()
-		instance.queue_free()
+		if (is_instance_valid(instance)):
+			instance.queue_free()
 func massLoad():
 	pieceExtinction()
 	for i in range(0, 64):

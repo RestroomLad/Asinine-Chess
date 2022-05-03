@@ -3,6 +3,7 @@ extends Node2D
 export var rank = 0
 export var file = 0
 var board
+var hasMoved
 var selected = false
 var midpointX = 1024/2
 var midpointY = 576/2
@@ -11,6 +12,7 @@ signal checkPiece(piece, startI, endI)
 
 func _ready():		# When this piece is spawned
 	board = get_tree().get_root().get_node("Node2D").get_node("Chessboard").board
+	hasMoved = false
 	load_piece()		#load the piece
 
 func load_piece():	#Loading function to print piece to the screen
@@ -33,6 +35,9 @@ func checkPiece(f, r):
 	var endIndex = r * 8 + f
 	if 0 <= f && f < 8 && 0 <= r && r < 8:
 		emit_signal("checkPiece", self, startIndex, endIndex)
+	else:
+		emit_signal("checkPiece", self, startIndex, -1)
+		self.queue_free()
 	load_piece()
 
 
